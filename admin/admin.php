@@ -24,10 +24,10 @@ $content = $result->fetch_all(MYSQLI_ASSOC);
 <body>
 <a href="create.php">Pagina toevoegen</a>
 	<table>
-		<th><a href="?sort=page&ascdesc=<?=$ascdesc?>"></a>Pagina</th>
-		<th><a href="?sort=content&ascdesc=<?=$ascdesc?>">Inhoud</th>
-		<th><a href="?sort=menuoption&ascdesc=<?=$ascdesc?>">Menu-optie</th>
-		<th><a href="?sort=menuorder&ascdesc=<?=$ascdesc?>">Menu-order</th>
+		<th><a href="?sort=page&ascdesc=<?=$ascdesc?>">Pagina</th></a>
+		<th><a href="?sort=content&ascdesc=<?=$ascdesc?>">Inhoud</th></a>
+		<th><a href="?sort=menuoption&ascdesc=<?=$ascdesc?>">Menu-optie</th></a>
+		<th><a href="?sort=menuorder&ascdesc=<?=$ascdesc?>">Menu-order</th></a>
 		<th></th>
 		<th></th>
 

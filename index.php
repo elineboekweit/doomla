@@ -23,17 +23,15 @@ function getContent($content) {
 
 
 function getMenu($content) {
+	echo "<ul>";
 	foreach ($content as $menuoption) {
 		$menu = $menuoption['menuoption'];
 		$page = $menuoption['page'];
 ?>
-		<ul>
-			<li><a href="?page=<?=$page?>"><?=$menu?></a><br></li>
-		</ul>
+			<li><a href="?page=<?=$page?>"><?=$menu?></a></li>
 <?php
 	}
+	echo "<ul>";
 }
-
-
 
 require "templates/template.php";

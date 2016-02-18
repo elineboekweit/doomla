@@ -1,0 +1,41 @@
+body, html {
+
+	padding: 0;
+	margin: 0;
+}
+nav {
+	background-color:rgba(181, 0, 0, 1);
+	display: block;
+	padding: 10px;
+}
+#section {
+	height: auto;
+	margin: auto;
+	width: 400px;	
+}
+section img {
+	width: 400px;
+}	
+article {
+	height: auto;
+	border: 2px solid black;
+	width: 70vw;
+	margin: auto;
+	position: relative;
+}
+footer {
+	text-align: center;
+	background-color:rgba(181, 0, 0, 1);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 1%;
+}
+ul li {
+	display: inline;
+}
+a {
+	text-decoration: none;
+	color: white;
+	margin: 1vw;
+}

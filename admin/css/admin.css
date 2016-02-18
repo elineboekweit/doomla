@@ -1,7 +1,10 @@
 
+table {
+	width: 90vw;
+}
 table, th, td {
 	border-collapse: collapse;
 	border: 2px solid black;
 	margin: auto;
-	width: 90vw;
+	padding: 10px;
 }

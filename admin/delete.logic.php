@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		$menu = $result['menuoption'];
 		$order = $result['menuorder'];
 		$content = $result['content'];
+		$template = $result['template'];
 	}else{
 		header("location: admin.php");
 	}

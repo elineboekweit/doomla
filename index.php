@@ -4,6 +4,7 @@ require 'db_conn.php';
 $query = "SELECT * FROM pagecontent ORDER BY menuorder";
 $result = $db->query($query);
 $content = $result->fetch_all(MYSQLI_ASSOC);
+$template = "template.php";
 
 function getContent($content) {
 	$once = false;
@@ -11,7 +12,12 @@ function getContent($content) {
 	foreach ($content as $contentpart ) {
 		if ($contentpart['page'] == $page) {
 			$content1 = $contentpart['content'];
-			return $content1;	
+			$template = $contentpart['template'];
+			$template = isset($contentpart['template']) ? $contentpart['template'] : null;
+			if ($template == null) {
+				$template = "template";
+			}
+			return array('content1' => $content1, 'template' => $template);
 		}else {
 			$once = true;
 		}
@@ -27,11 +33,15 @@ function getMenu($content) {
 	foreach ($content as $menuoption) {
 		$menu = $menuoption['menuoption'];
 		$page = $menuoption['page'];
+		$getpage = $_GET['page']; 
+		$active = ($page == $getpage) ? 'active' : 'inactive';
+		//<li class="<?= $active = ($page == $menuitem['page']) ? 'active' : 'inactive' ;
 ?>
-			<li><a href="?page=<?=$page?>"><?=$menu?></a></li>
+			<li class="<?=$active?>"><a href="?page=<?=$page?>"><?=$menu?></a></li>
 <?php
 	}
+
 	echo "<ul>";
 }
-
-require "templates/template.php";
+$template = getContent($content)['template'];
+require "templates/$template.php";

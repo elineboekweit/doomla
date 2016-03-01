@@ -18,6 +18,9 @@ require "create.logic.php";
 		<label for="order">Menu-order:</label>
 		<input type="number" id="order" name="order" value="0">
 		<br>
+		<label for="template">template:</label>
+		<input type="text" id="template" name="template">
+		<br>
 		<label for="inhoud">Inhoud:</label>
 		<textarea id="content" name="content"></textarea>
 		<br>

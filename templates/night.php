@@ -3,7 +3,7 @@
 <head>
 	<title>doomla</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="templates/css/style.css">
+	<link rel="stylesheet" href="templates/css/night.css">
 </head>
 <body>
 	<header>
@@ -12,7 +12,7 @@
 		</nav>
 	</header>
 	<section id="section">
-		<h2>Op safari met Doomla</h2>
+		<h2>Op safari met Doomla in the dark</h2>
 	</section>
 	<section>
 		<article>

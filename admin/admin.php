@@ -28,6 +28,7 @@ $content = $result->fetch_all(MYSQLI_ASSOC);
 		<th><a href="?sort=content&ascdesc=<?=$ascdesc?>">Inhoud</th></a>
 		<th><a href="?sort=menuoption&ascdesc=<?=$ascdesc?>">Menu-optie</th></a>
 		<th><a href="?sort=menuorder&ascdesc=<?=$ascdesc?>">Menu-order</th></a>
+		<th><a href="?sort=template&ascdesc=<?=$ascdesc?>">Template</th>
 		<th></th>
 		<th></th>
 
@@ -38,6 +39,7 @@ $content = $result->fetch_all(MYSQLI_ASSOC);
 			<td><?=$content['content']?></td>
 			<td><?=$content['menuoption']?></td>
 			<td><?=$content['menuorder']?></td>
+			<td><?=$content['template']?></td>
 			<td><a href="edit.php?id=<?=$content['id']?>">update</a></td>
 			<td><a href="delete.php?id=<?=$content['id']?>">delete</a></td>
 		</tr>

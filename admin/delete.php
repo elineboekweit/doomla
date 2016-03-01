@@ -21,6 +21,9 @@ require "delete.logic.php";
 	<label for="menuorder">menu-order:</label>
 	<span><?=$order?></span>
 	<br>
+	<label for="template">Template:</label>
+	<span><?=$template?></span>
+	<br>
 	<label for="content">Content:</label>
 	<span><?=$content?></span>
 	<br>

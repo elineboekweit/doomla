@@ -1,5 +1,8 @@
 <?php
 require "../db_conn.php";
+require "access.php";
+
+CheckAccess();
 
 $order = isset($_GET['sort']) ? $_GET['sort']: 'page';
 $ascdesc = isset($_GET['ascdesc']) ? $_GET['ascdesc'] : 'asc';
@@ -13,6 +16,7 @@ if(isset($ascdesc) and $ascdesc == "asc"){
 $query = "SELECT * FROM pagecontent ORDER BY $order $ascdesc";
 $result = $db->query($query);
 $content = $result->fetch_all(MYSQLI_ASSOC);
+var_dump($_COOKIE);
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +27,7 @@ $content = $result->fetch_all(MYSQLI_ASSOC);
 </head>
 <body>
 <a href="create.php">Pagina toevoegen</a>
+<a href="logout.php">afmelden</a><!---------->
 	<table>
 		<th><a href="?sort=page&ascdesc=<?=$ascdesc?>">Pagina</th></a>
 		<th><a href="?sort=content&ascdesc=<?=$ascdesc?>">Inhoud</th></a>

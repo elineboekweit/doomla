@@ -1,6 +1,7 @@
 <?php
 require "../db_conn.php";
-
+require "access.php";
+CheckAccess();
 $id = $db->escape_string($_GET['id']);
 
 $query = "SELECT * FROM pagecontent WHERE id=$id";
@@ -18,6 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$template= isset($_POST['template']) ? $_POST['template'] : null;
 
 	$stmt->execute();	
-	header("location: admin.php");
+	header("location: index.php");
 }
 

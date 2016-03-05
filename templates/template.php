@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>doomla</title>
+	<title><?php echo getTitle($content);?></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="templates/css/style.css">
 </head>
@@ -11,6 +11,9 @@
 			<?php echo getMenu($content);?>
 		</nav>
 	</header>
+	<aside>
+		<?php echo getModule();?>
+	</aside>
 	<section id="section">
 		<h2>Op safari met Doomla</h2>
 	</section>

@@ -25,7 +25,7 @@ require "create.logic.php";
 		<textarea id="content" name="content"></textarea>
 		<br>
 		<input type="submit" value="Opslaan">
-		<a href="admin.php">Annuleren</a>
+		<a href="index.php">Annuleren</a>
 	</form>
 </body>
 </html>

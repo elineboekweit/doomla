@@ -4,11 +4,15 @@ require 'db_conn.php';
 $query = "SELECT * FROM pagecontent ORDER BY menuorder";
 $result = $db->query($query);
 $content = $result->fetch_all(MYSQLI_ASSOC);
-$template = "template.php";
+$template = "template";
+$page = isset($_GET['page']) ? $_GET['page'] : 'home';
+//var_dump($content);
 
+$pagecontent = isset($content[0]['content']) ? $content[0]['content'] : 'No Content was found';
+	
 function getContent($content) {
 	$once = false;
-	$page = isset($_GET['page']) ? $_GET['page'] : 'home';
+	global $page;
 	foreach ($content as $contentpart ) {
 		if ($contentpart['page'] == $page) {
 			$content1 = $contentpart['content'];
@@ -27,21 +31,49 @@ function getContent($content) {
 	}
 }
 
-
 function getMenu($content) {
 	echo "<ul>";
 	foreach ($content as $menuoption) {
-		$menu = $menuoption['menuoption'];
+		$menu = isset($menuoption['menuoption']) ? $menuoption['menuoption'] : null;
 		$page = $menuoption['page'];
-		$getpage = $_GET['page']; 
+		$getpage = isset($_GET['page']) ? $_GET['page'] : 'home'; 
 		$active = ($page == $getpage) ? 'active' : 'inactive';
-		//<li class="<?= $active = ($page == $menuitem['page']) ? 'active' : 'inactive' ;
+		if ($menu != null){
 ?>
-			<li class="<?=$active?>"><a href="?page=<?=$page?>"><?=$menu?></a></li>
+			<li class="<?=$active?>"><a href="?page=<?=$page?>"><button><?=$menu?></button></a></li>
 <?php
+		}
 	}
-
 	echo "<ul>";
 }
-$template = getContent($content)['template'];
-require "templates/$template.php";
+
+
+function getTitle($content){
+$getpage = isset($_GET['page']) ? $_GET['page'] : 'home';
+	foreach ($content as $page) {
+		if ($getpage == $page['page']) {
+			$menuoption = $page['menuoption'];
+			return $menuoption;
+		}	
+	}
+}
+
+function getModule() {
+	require "db_conn.php";
+	$query = "SELECT * FROM pagecontent WHERE page='contact'";
+	$result = $db->query($query);
+	$content = $result->fetch_assoc();
+	return $content['content'];
+
+}
+
+
+$query = "SELECT template FROM pagecontent WHERE page='$page'";
+$result = $db->query($query);
+$pagecontent = $result->fetch_assoc();
+
+if ($pagecontent['template'] == '') {
+	$pagecontent['template'] = 'template';
+}
+
+require "templates/".$pagecontent['template'].".php";

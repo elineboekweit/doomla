@@ -1,5 +1,7 @@
 <?php
+require "access.php";
 require "../db_conn.php";
+CheckAccess();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$stmt = $db->prepare("INSERT INTO pagecontent (page, menuoption, menuorder, content, template) VALUES (?, ?, ?, ?, ?)");
@@ -11,6 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$content = isset($_POST['content']) ? $_POST['content'] : null;
 	$template = isset($_POST['template']) ? $_POST['template'] : null;
 	$stmt->execute();
-	header("location: admin.php");
+	header("location: index.php");
 }
 

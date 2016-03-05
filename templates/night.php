@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>doomla</title>
+	<title><?php echo getTitle($content);?></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="templates/css/night.css">
 </head>

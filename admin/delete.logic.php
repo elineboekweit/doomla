@@ -1,4 +1,6 @@
 <?php
+require "access.php";
+CheckAccess();
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	if (isset($_GET['id'])) {
 		require "../db_conn.php";
@@ -26,5 +28,5 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		$query = "DELETE FROM pagecontent WHERE id=$id";
 		$result = $db->query($query);
 	}
-	header("location: admin.php");
+	header("location: index.php");
 }

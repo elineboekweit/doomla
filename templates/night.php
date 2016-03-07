@@ -11,6 +11,9 @@
 			<?php echo getMenu($content);?>
 		</nav>
 	</header>
+	<aside>
+		<?php echo getModule();?>
+	</aside>
 	<section id="section">
 		<h2>Op safari met Doomla in the dark</h2>
 	</section>

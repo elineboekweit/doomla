@@ -16,7 +16,6 @@ if(isset($ascdesc) and $ascdesc == "asc"){
 $query = "SELECT * FROM pagecontent ORDER BY $order $ascdesc";
 $result = $db->query($query);
 $content = $result->fetch_all(MYSQLI_ASSOC);
-var_dump($_COOKIE);
 ?>
 
 <!DOCTYPE html>

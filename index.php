@@ -6,7 +6,7 @@ $result = $db->query($query);
 $content = $result->fetch_all(MYSQLI_ASSOC);
 $template = "template";
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
-//var_dump($content);
+
 
 $pagecontent = isset($content[0]['content']) ? $content[0]['content'] : 'No Content was found';
 	

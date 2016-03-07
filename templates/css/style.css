@@ -13,7 +13,7 @@ nav {
 	text-align: center;
 	background-color:rgba(181, 0, 0, 1);
 	display: block;
-	/*padding: 10px;*/
+
 
 }
 #section {
@@ -59,12 +59,12 @@ a {
 	color: white;
 	margin: 1vw;
 }
-.active a {
-	color: black;
-	font-weight: bold;
+h2 {
+	margin: 0;
+	padding: 0;
 }
 button 	{
-	background-color: rgba(255, 255, 0, 0.2);
+	background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid black;
     padding: 10px 27px;
     text-align: center;
@@ -73,18 +73,17 @@ button 	{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    color: white;
 }
-button .active{
-	padding: 3px 5px;
+.active button {
+	padding: 10px 27px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
     cursor: pointer;
-}
-h2 {
-	margin: 0;
-	padding: 0;
+    color: black;
+    font-weight: bold;
 }
 aside {
 	border: 1px solid black;

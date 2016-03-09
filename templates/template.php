@@ -8,7 +8,7 @@
 <body>
 	<header>
 		<nav>
-			<?php echo getMenu($content);?>
+			<?php echo getMenu();?>
 		</nav>
 	</header>
 	<aside>

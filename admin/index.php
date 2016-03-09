@@ -27,6 +27,7 @@ $content = $result->fetch_all(MYSQLI_ASSOC);
 <body>
 <a href="create.php">Pagina toevoegen</a>
 <a href="logout.php">afmelden</a><!---------->
+<a href="users.php">Gebruikers beheren</a>
 	<table>
 		<th><a href="?sort=page&ascdesc=<?=$ascdesc?>">Pagina</th></a>
 		<th><a href="?sort=content&ascdesc=<?=$ascdesc?>">Inhoud</th></a>

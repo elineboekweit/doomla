@@ -31,20 +31,46 @@ function getContent($content) {
 	}
 }
 
-function getMenu($content) {
+function getMenu() {
 	echo "<ul>";
+	require 'db_conn.php';
+		$query = "SELECT * FROM pagecontent WHERE pagecontent_id=0";
+		$result = $db->query($query);
+		$content = $result->fetch_all(MYSQLI_ASSOC);
+
 	foreach ($content as $menuoption) {
 		$menu = isset($menuoption['menuoption']) ? $menuoption['menuoption'] : null;
 		$page = $menuoption['page'];
 		$getpage = isset($_GET['page']) ? $_GET['page'] : 'home'; 
 		$active = ($page == $getpage) ? 'active' : 'inactive';
+		
 		if ($menu != null){
 ?>
-			<li class="<?=$active?>"><a href="?page=<?=$page?>"><button><?=$menu?></button></a></li>
+			<li class="<?=$active?>"><a href="?page=<?=$page?>"><button><?=$menu?></button></a><?php echo getSubmenu($menuoption['id']) ?></li>
 <?php
 		}
+
 	}
-	echo "<ul>";
+
+	echo '<a id="login" href="admin/login.php">login</a></ul>';
+}
+function getSubmenu($id) {
+
+	require 'db_conn.php';
+	$query = "SELECT * FROM pagecontent WHERE pagecontent_id='$id'";
+	$result = $db->query($query);
+	$submenu = $result->fetch_all(MYSQLI_ASSOC);?>
+<?php
+	foreach ($submenu as $submenu) {?>
+		<li class="submenu"><a href="?page=<?=$submenu['page']?>"><?=$submenu['menuoption']?></a></li>
+<?php
+
+
+?>
+<?php
+	} 
+?>
+<?php
 }
 
 

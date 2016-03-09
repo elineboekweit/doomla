@@ -30,7 +30,7 @@ $users = $result->fetch_all(MYSQLI_ASSOC);
 			<td><?=$name?></td>
 			<td><?=$user['password']?></td>
 			<td><a href="users_edit.php?name=<?=$name?>">edit</a></td>
-			<td><a href="users_delete.php">delete</a></td>
+			<td><a href="users_delete.php?name=<?=$name?>">delete</a></td>
 		</tr>
 	<?php
 		}

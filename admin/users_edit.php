@@ -11,13 +11,18 @@ $users = $result->fetch_assoc();
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-	$stmt = $db->prepare("UPDATE user SET name=?, password=? WHERE name=?");
-	$stmt->bind_param("sss", $name, $password, $getname);
-
 	$name = isset($_POST['user']) ? $_POST['user'] : header("location: users.php?nocred");
 	$password = isset($_POST['password']) ? $_POST['password'] : header("location: users.php?nocred");
 
-	$stmt->execute();
+	if(preg_match("/(['`%\",$#\*]+)/", $name)) {
+		echo "<p>Invalid username.<br>Username may only contain letters(a-z) and numbers(0-9)</p>";
+	}else{
+		$stmt = $db->prepare("UPDATE user SET name=?, password=? WHERE name=?");
+		$stmt->bind_param("sss", $name, $password, $getname);
+
+		$stmt->execute();
+	}
+
 
 }
 ?>

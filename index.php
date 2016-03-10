@@ -27,50 +27,51 @@ function getContent($content) {
 		}
 	}
 	if ($once) {
-		echo "page does not exsist.";
+		echo "page does not exist.";
 	}
 }
 
 function getMenu() {
-	echo "<ul>";
+	echo '<a id="login" href="admin/login.php">login</a>';
+	echo '<ul class="menu">';
 	require 'db_conn.php';
-		$query = "SELECT * FROM pagecontent WHERE pagecontent_id=0";
-		$result = $db->query($query);
-		$content = $result->fetch_all(MYSQLI_ASSOC);
+	$query = "SELECT * FROM pagecontent";
+	$result = $db->query($query);
+	$content = $result->fetch_all(MYSQLI_ASSOC);
 
 	foreach ($content as $menuoption) {
 		$menu = isset($menuoption['menuoption']) ? $menuoption['menuoption'] : null;
 		$page = $menuoption['page'];
 		$getpage = isset($_GET['page']) ? $_GET['page'] : 'home'; 
 		$active = ($page == $getpage) ? 'active' : 'inactive';
+		$pagecontent_id = $menuoption['pagecontent_id'];
 		
-		if ($menu != null){
+		if ($menu != null && $pagecontent_id == 0){
 ?>
-			<li class="<?=$active?>"><a href="?page=<?=$page?>"><button><?=$menu?></button></a><?php echo getSubmenu($menuoption['id']) ?></li>
+			<li class="<?=$active?>"><a href="?page=<?=$page?>"><?=$menu?></a><?php echo getSubmenu($menuoption['id'])?>
 <?php
 		}
 
 	}
-
-	echo '<a id="login" href="admin/login.php">login</a></ul>';
+	echo '</ul>';
 }
-function getSubmenu($id) {
 
+function getSubmenu($id) {
+	
 	require 'db_conn.php';
 	$query = "SELECT * FROM pagecontent WHERE pagecontent_id='$id'";
 	$result = $db->query($query);
-	$submenu = $result->fetch_all(MYSQLI_ASSOC);?>
-<?php
-	foreach ($submenu as $submenu) {?>
-		<li class="submenu"><a href="?page=<?=$submenu['page']?>"><?=$submenu['menuoption']?></a></li>
-<?php
-
-
+	$submenu = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 <?php
-	} 
-?>
+	if ($submenu) {
+		echo '<ul class="submenu">';
+		foreach ($submenu as $submenu) {?>
+			<li><a href="?page=<?=$submenu['page']?>"><?=$submenu['menuoption']?></a></li>
 <?php
+		} 
+	echo "</ul>";
+	}
 }
 
 

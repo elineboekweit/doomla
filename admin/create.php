@@ -15,8 +15,11 @@ require "create.logic.php";
 		<label for="menu">Menu-optie:</label>
 		<input type="text" id="menu" name="menu">
 		<br>
-		<label for="order">Menu-order:</label>
+		<label for="order">Volgorde:</label>
 		<input type="number" id="order" name="order" value="0">
+		<br>
+		<label for="sub">Onder:</label>
+		<?php echo getPagesForSub();?>
 		<br>
 		<label for="template">template:</label>
 		<input type="text" id="template" name="template">

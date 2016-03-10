@@ -15,8 +15,11 @@ require "edit.logic.php";
 	<label for="menu">Menu-optie:</label>
 	<input type="text" id="menu" name="menu" value="<?=$result['menuoption']?>">
 	<br>
-	<label for="order">Menu-order:</label>
+	<label for="order">Volgorde:</label>
 	<input type="number" id="order" name="order" value="<?=$result['menuorder']?>">
+	<br>
+	<label for="sub">Onder:</label>
+	<?php echo getPagesForSub($oldsubid, $id);?>
 	<br>
 	<label for="template">Template:</label>
 	<input type="text" id="template" name="template" value="<?=$result['template']?>">

@@ -25,9 +25,13 @@ $content = $result->fetch_all(MYSQLI_ASSOC);
 	<link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-<a href="create.php">Pagina toevoegen</a>
-<a href="logout.php">afmelden</a><!---------->
-<a href="users.php">Gebruikers beheren</a>
+<nav>
+	<ul>
+		<li><a href="create.php">Pagina toevoegen</a></li>
+		<li><a href="users.php">Gebruikers beheren</a></li>
+		<li><a href="logout.php">afmelden</a><!----------></li>
+	</ul>
+</nav>
 	<table>
 		<th><a href="?sort=page&ascdesc=<?=$ascdesc?>">Pagina</th></a>
 		<th><a href="?sort=content&ascdesc=<?=$ascdesc?>">Inhoud</th></a>

@@ -1,4 +1,11 @@
 
+body, html {
+	padding: 0;
+	margin: 0;
+	background-image: url(../images/background.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
 table {
 	width: 90vw;
 }
@@ -7,4 +14,48 @@ table, th, td {
 	border: 2px solid black;
 	margin: auto;
 	padding: 10px;
+}
+
+ul li {
+	display: inline;
+	margin: 30px;
+}
+
+nav {
+	text-align: center;
+	background-color:rgba(181, 0, 0, 1);
+	display: block;
+}
+nav ul {
+	list-style: none;
+	background-color: rgba(181, 0, 0, 1);
+	text-align: center;
+	padding: 0;
+	margin: 0;
+
+}
+
+nav li {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.2em;
+	line-height: 40px;
+	text-align: left;
+
+}
+nav a {
+	text-decoration: none;
+	color: #fff;
+
+	border-bottom: 1px solid #888;
+	transition: .3s background-color;
+}
+
+nav a:hover {
+	background-color: rgb(255, 204, 153);
+}
+
+nav a.active {
+	background-color: #aaa;
+	color: #444;
+	cursor: default;
 }

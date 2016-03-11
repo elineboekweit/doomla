@@ -1,27 +1,51 @@
 <?php
+	$message = "";
 	if (isset($_GET['nocred'])) {
-		echo "username or password wrong";
+		$message = "Username or password is incorrect";
 	}elseif (isset($_GET['usercookie']) || isset($_GET['tokencookie'])){
-		echo "session timed out.";
+		$message = "session timed out.";
 	}
 ?>
 <!DOCTYPE html>
-<html>
 <head>
-	<title></title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="">
+	<title>Login doomla</title>
+
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/login.css">
+
 </head>
+
 <body>
-	<h1>aanmelden</h1>
-	<form action="login.logic.php" method="post">
-		<label for="user">Gebruiker:</label>
-		<input type="text" id="username" name="username" required>
-		<br>
-		<label for="password">Wachtwoord:</label>
-		<input type="password" id="password" name="password" required>
-		<br>
-		<input type="submit" value="Aanmelden">
-	</form>
+	<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden">Inloggen</h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>Log In</h2>
+			</div>
+			<?=$message?>
+			<form action="login.logic.php" method="post">
+				<label for="username">Username</label>
+				<br>
+				<input type="text" id="username" name="username" required>
+				<br>
+				<label for="password">Password</label>
+				<br>
+				<input type="password" id="password" name="password" required>
+				<br>
+				<button type="submit" value="Aanmelden">Sign In</button>
+				<br>
+			</form>
+		</div>
+	</div>
 </body>
+
 </html>
+
+

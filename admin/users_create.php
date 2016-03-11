@@ -2,6 +2,7 @@
 require "../db_conn.php";
 require "access.php";
 checkAccess();
+$message = null;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -14,38 +15,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$stmt->store_result();	
 
 	if ($stmt->num_rows() > 0) {
-		echo "username already exitsts.";
+		$message = "username already exitsts.";
 	}else {
-		if(preg_match("/(['`%\",$#\*]+)/", $user)) {
-			echo "<p>Invalid username.<br>Username may only contain letters(a-z) and numbers(0-9)</p>";
+		if(preg_match("/[^-a-z0-9_.-]/", $user)) { 
+			$message = "<p>Invalid username.<br>Username may only contain letters(a-z) and numbers(0-9)</p>";
 		}else {
 		$stmt = $db->prepare("INSERT INTO user (name, password)
 			VALUES (?, ?)");
 		$stmt->bind_param("ss", $user, $password);
 		$stmt->execute();
 			
-		}
 		header("location: users.php");	
+		}
 	}
 }
 ?>
+
 <!DOCTYPE html>
-<html>
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	<link rel="stylesheet" href="">
-</head>
-<body>
-	<form method="post">
-		<label for="user">Username:</label>
-		<input type="text" id="user" name="user" required>
-		<br>
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="password" required>
+	<title>Login doomla</title>
 
-		<input type="submit">
-	</form>			
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/login.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="top">
+			<h1 id="title" class="hidden">Users beheren</h1>
+		</div>
+		<div class="login-box animated fadeInUp">
+			<div class="box-header">
+				<h2>create user</h2>
+			</div>
+			<?=$message?>
+				<form method="post">
+					<label for="user">Username:</label>
+					<input type="text" id="user" name="user" required>
+					<br>
+					<label for="password">Password:</label>
+					<input type="password" id="password" name="password" required>
+
+					<input type="submit">
+				</form>	
+		</div>
+	</div>
 </body>
+
 </html>

@@ -8,7 +8,12 @@ $query = "SELECT * FROM pagecontent WHERE id=$id";
 $result = $db->query($query);
 $result = $result->fetch_assoc();	
 
-$oldsubid = $result['menuoption'];
+$oldpagecontent = $result['pagecontent_id'];
+$query1 = "SELECT * FROM pagecontent WHERE id=$oldpagecontent";
+$result1 = $db->query($query1);
+$olddata = $result1->fetch_assoc();
+
+$oldsubid = ($oldpagecontent == 0) ? "select" : $olddata['menuoption'];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,15 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	header("location: index.php");
 }
 
-function getPagesForSub($oldsubid, $id) {
+function getPagesForSub($oldsubid, $oldpagecontent) {
+
 	require "../db_conn.php";
 	$query = "SELECT * FROM pagecontent WHERE pagecontent_id=0";
 	$result = $db->query($query);
 	$content = $result->fetch_all(MYSQLI_ASSOC);
-	$test = "test";
 	echo '<select name="sub">';
 	?>
-	<option selected disabled style="display:none" value="<?=$id?>"><?=$oldsubid?></option>
+	<option selected disabled style="display:none" value="<?=$oldpagecontent?>"><?=$oldsubid?></option>
 	<?php
 
 	foreach ($content as $menu) {

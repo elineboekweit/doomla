@@ -4,26 +4,28 @@ require "access.php";
 checkAccess();
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
-	//if (isset($_GET['name'])) {
+	if (isset($_GET['name'])) {
 		$name = $_GET['name'];
 
 		$query = "SELECT name FROM user WHERE name='$name'";
 		$result = $db->query($query);
 
 		$username = $result->fetch_assoc();
-		var_dump($username);
+		$username = $username['name'];
 
-//	}
+	}
 }
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-	//if (isset($_POST['confirmed'])) {
+	if (isset($_POST['confirmed'])) {
 		$name = $_POST['name'];
+		var_dump($name);
 
-		$query = "DELETE FROM user WHERE name=$name";
+		$query = "DELETE FROM user WHERE name='$name'";
+		var_dump($query);
 		$result = $db->query($query);
-		//header("location: users.php");
 	}
-//}
+		header("location: users.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -62,9 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<h2>Delete user</h2>
 			</div>
 			<form method="post">
-				<input type="hidden" name="name" value="<?=$username['name']?>">
+				<input type="hidden" name="name" value="<?=$username?>">
 				<label for="name"> Username:</label>
-				<span><?=$username['name']?></span>
+				<span><?=$username?></span>
 				<br>
 				<input type="submit" name="confirmed" value="Yes">
 				<input type="submit" name="canceled" value="No">

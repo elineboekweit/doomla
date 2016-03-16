@@ -30,11 +30,11 @@ require "create.logic.php";
 	<form method="post">
 		<label for="pagina">Pagina:</label>
 		<br>
-		<input type="text" id="page" name="page">
+		<input type="text" id="page" name="page" style="text-transform: lowercase" maxlength="10" required>
 		<br>
 		<label for="menu">Menu-optie:</label>
 		<br>
-		<input type="text" id="menu" name="menu">
+		<input type="text" id="menu" name="menu" placeholder="Dezelfde naam als pagina" maxlength="10" required>
 		<br>
 		<label for="order">Volgorde:</label>
 		<br>
@@ -46,7 +46,11 @@ require "create.logic.php";
 		<br>
 		<label for="template">template:</label>
 		<br>
-		<input type="text" id="template" name="template">
+		<select name="template">
+			<option value="">None</option>
+			<option value="night">Night</option>
+			<option value="books">Books</option>
+		</select>
 		<br>
 		<label for="inhoud">Inhoud:</label>
 		<br>

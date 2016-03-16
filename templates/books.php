@@ -3,7 +3,7 @@
 <head>
 	<title><?php echo getTitle($content);?></title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="templates/css/night.css">
+	<link rel="stylesheet" href="templates/css/books.css">
 	<link rel="icon" href="templates/images/eb.png">
 </head>
 <body>
@@ -16,7 +16,7 @@
 		<?php echo getModule();?>
 	</aside>
 	<section id="section">
-		<h2>Op safari met Doomla in the dark</h2>
+		<h2>Op safari met Doomla</h2>
 	</section>
 	<section>
 		<article>

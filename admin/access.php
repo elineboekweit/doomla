@@ -14,7 +14,6 @@ function setAccess($username) {
 
 	$stmt->execute();
 
-	//header ("location: index.php");
 }
 
 

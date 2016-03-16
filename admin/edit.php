@@ -25,34 +25,40 @@ require "edit.logic.php";
 				<h2>Gegevens</h2>
 			</div>
 
-				<form method="post">
-					<label for="pagina">Pagina:</label>
-					<br>
-					<input type="text" id="page" name="page" value="<?=$result['page']?>">
-					<br>
-					<label for="menu">Menu-optie:</label>
-					<br>
-					<input type="text" id="menu" name="menu" value="<?=$result['menuoption']?>">
-					<br>
-					<label for="order">Volgorde:</label>
-					<br>
-					<input type="number" id="order" name="order" value="<?=$result['menuorder']?>">
-					<br>
-					<label for="sub">Onder:</label>
-					<br>
-					<?php echo getPagesForSub($oldsubid, $oldpagecontent);?>
-					<br>
-					<label for="template">Template:</label>
-					<br>
-					<input type="text" id="template" name="template" value="<?=$result['template']?>">
-					<br>
-					<label for="inhoud">Inhoud:</label>
-					<br>
-					<textarea id="content" name="content"><?=$result['content']?></textarea>
-					<br>
-					<input type="submit" value="Opslaan">
-					<a href="index.php">Annuleren</a>
-				</form>
+			<form method="post">
+				<label for="pagina">Pagina:</label>
+				<br>
+				<input type="text" id="page" name="page" value="<?=$result['page']?>" style="text-transform: lowercase;" maxlength="10" required>
+				<br>
+				<label for="menu">Menu-optie:</label>
+				<br>
+				<input type="text" id="menu" name="menu" placeholder="Dezelfde naam als pagina" value="<?=$result['menuoption']?>" maxlength="10" required>
+				<br>
+				<label for="order">Volgorde:</label>
+				<br>
+				<input type="number" id="order" name="order" value="<?=$result['menuorder']?>">
+				<br>
+				<label for="sub">Onder:</label>
+				<br>
+				<?php echo getPagesForSub($oldmenuoption, $oldpagecontent);?>
+				<br>
+				<label for="template">Template:</label>
+				<br>
+				<select name="template">
+					<option selected disabled style="display:none" value="<?=$oldtemplate?>"><?=$oldtemplate?></option>
+					<option value="">None</option>
+					<option value="night">Night</option>
+					<option value="books">Books</option>
+				</select>
+
+				<br>
+				<label for="inhoud">Inhoud:</label>
+				<br>
+				<textarea id="content" name="content"><?=$result['content']?></textarea>
+				<br>
+				<input type="submit" value="Opslaan">
+				<a href="index.php">Annuleren</a>
+			</form>
 		</div>
 	</div>
 </body>

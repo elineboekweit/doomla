@@ -8,12 +8,16 @@ $query = "SELECT * FROM pagecontent WHERE id=$id";
 $result = $db->query($query);
 $result = $result->fetch_assoc();	
 
+$oldtemplate = $result['template'];
+$oldsub = $result['pagecontent_id'];
+
+
 $oldpagecontent = $result['pagecontent_id'];
+
 $query1 = "SELECT * FROM pagecontent WHERE id=$oldpagecontent";
 $result1 = $db->query($query1);
 $olddata = $result1->fetch_assoc();
-
-$oldsubid = ($oldpagecontent == 0) ? "select" : $olddata['menuoption'];
+$oldmenuoption = $olddata['menuoption'];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -24,14 +28,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$menu = isset($_POST['menu']) ? strip_tags($_POST['menu']) : null;
 	$order = isset($_POST['order']) ? strip_tags($_POST['order']) : null;
 	$content = isset($_POST['content']) ? $_POST['content'] : null;
-	$template= isset($_POST['template']) ? $_POST['template'] : null;
-	$subid = isset($_POST['sub']) ? $_POST['sub'] : null;
+	$template= isset($_POST['template']) ? $_POST['template'] : $oldtemplate;
+	$subid = isset($_POST['sub']) ? $_POST['sub'] : $oldsub;
+	var_dump($_POST);
+
 
 	$stmt->execute();	
 	header("location: index.php");
 }
 
-function getPagesForSub($oldsubid, $oldpagecontent) {
+function getPagesForSub($oldmenuoption, $oldpagecontent) {
 
 	require "../db_conn.php";
 	$query = "SELECT * FROM pagecontent WHERE pagecontent_id=0";
@@ -39,7 +45,7 @@ function getPagesForSub($oldsubid, $oldpagecontent) {
 	$content = $result->fetch_all(MYSQLI_ASSOC);
 	echo '<select name="sub">';
 	?>
-	<option selected disabled style="display:none" value="<?=$oldpagecontent?>"><?=$oldsubid?></option>
+	<option selected disabled style="display:none" value="<?=$oldpagecontent?>"><?=$oldmenuoption?></option>
 	<?php
 
 	foreach ($content as $menu) {

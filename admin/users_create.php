@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<label for="password">Password:</label>
 					<input type="password" id="password" name="password" required>
 
-					<input type="submit">
+					<input type="submit" value="verzenden">
 				</form>	
 		</div>
 	</div>

@@ -4,6 +4,7 @@
 	<title><?php echo getTitle($content);?></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="templates/css/style.css">
+	<link rel="icon" href="templates/images/eb.png">
 </head>
 <body>
 	<header>

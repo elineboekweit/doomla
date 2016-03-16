@@ -1,7 +1,7 @@
 body, html {
 	padding: 0;
 	margin: 0;
-	background-image: url(../images/night.jpg);
+	background-image: url(../images/book.png);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -9,7 +9,11 @@ header {
 	margin: 0
 	padding: 0;
 }
-
+nav {
+	text-align: center;
+	background-color: black;
+	display: block;
+}
 #section {
 	width: 400px;	
 	height: 250px;
@@ -30,7 +34,7 @@ article {
 	padding: 20px;
 	overflow: auto;
 	border: 3px solid black;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(255, 255, 255, 0.5);
 	width: 70vw;
 	margin: auto;
 	margin-bottom: 40px;
@@ -38,10 +42,10 @@ article {
 }
 footer {
 	text-align: center;
-	background-color: black;
+
     position: fixed;
    	padding: 5px;
-	color: white;
+	
     bottom: 0;
     left: 0;
     right: 0;
@@ -75,7 +79,7 @@ nav a {
 }
 
 nav a:hover {
-	background-color: rgba(181, 0, 0, 1);
+	background-color: rgb(255, 204, 153);
 }
 
 nav a.active {
@@ -125,6 +129,7 @@ nav li li {
 	nav > ul > li > a {
 		padding-left: 0;
 	}
+
 
 	nav li ul {
 		position: absolute;

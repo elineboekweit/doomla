@@ -1,6 +1,5 @@
 <?php 
 require 'db_conn.php';
-
 $query = "SELECT * FROM pagecontent ORDER BY menuorder";
 $result = $db->query($query);
 $content = $result->fetch_all(MYSQLI_ASSOC);
